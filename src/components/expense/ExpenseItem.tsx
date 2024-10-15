@@ -1,10 +1,11 @@
+import { ExpenseType } from "../../types/expense";
 import Button from "../ui/Button";
 
 type ExpenseItemProps = {
-    expense: number;
+    expense: ExpenseType;
     index: number;
-    expenses: number[];
-    setExpenses: (expenses: number[]) => void;
+    expenses: ExpenseType[];
+    setExpenses: (expenses: ExpenseType[]) => void;
 }
 
 const ExpenseItem = ({ expense, index, expenses, setExpenses } : ExpenseItemProps) => {
@@ -16,7 +17,7 @@ const ExpenseItem = ({ expense, index, expenses, setExpenses } : ExpenseItemProp
 
     return ( 
         <div className="px-6 py-4 rounded-md mb-1 flex justify-between items-center shadow-md">
-            {expense}
+            {expense.amount}€
             <Button 
                 text="Delete"
                 variant="danger"

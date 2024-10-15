@@ -1,20 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./components/ui/Input";
 import Button from "./components/ui/Button";
-import ExpenseItem from "./components/expense/expenseItem";
+import ExpenseItem from "./components/expense/ExpenseItem";
+import { ExpenseType } from "./types/expense";
 
 function App() {
-  const [expenses, setExpenses] = useState<number[]>([300, 40, 100, 200]);
+  const [expenses, setExpenses] = useState<ExpenseType[]>([]);
   const [expenseInput, setExpenseInput] = useState<number | null>(null);
+
+  useEffect(() => {
+    console.log("Component mounted");
+    fetchExpenses()
+  }, []);
+
+  const fetchExpenses = async () => {
+    const response = await fetch('expenses.json')
+    const data = await response.json()
+    console.log(data)
+    setExpenses(data)
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if(!expenseInput) return
 
+    const expense = {
+      amount: expenseInput,
+      category: "Test"
+    }
+
     setExpenses([
       ...expenses,
-      Number(expenseInput)
+      expense
     ]);
   }
 
