@@ -7,7 +7,7 @@ type ButtonProps = {
 }
 
 const buttonStyle = {
-    default: "rounded py-2 px-4 font-bold text-white",
+    default: "rounded py-4 px-6 font-bold text-white transition-all",
     primary: "bg-blue-500 hover:bg-blue-700",
     secondary: "bg-gray-500 hover:bg-gray-700",
     danger: "bg-red-500 hover:bg-red-700",

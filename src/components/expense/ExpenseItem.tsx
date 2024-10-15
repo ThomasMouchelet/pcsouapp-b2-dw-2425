@@ -1,21 +1,23 @@
+import { ExpenseType } from "../../types/expense";
 import Button from "../ui/Button";
 
 type ExpenseItemProps = {
-    expense: number;
-    key: number;
+    expense: ExpenseType;
+    index: number;
+    expenses: ExpenseType[];
+    setExpenses: (expenses: ExpenseType[]) => void;
 }
 
-const ExpenseItem = ({ expense, key } : ExpenseItemProps) => {
+const ExpenseItem = ({ expense, index, expenses, setExpenses } : ExpenseItemProps) => {
 
     const handleDelete = () => {
-        // Delete value into expenses Array
-        // set New values
-        console.log('delete');
+        expenses.splice(index, 1);
+        setExpenses([...expenses]);
     }
 
     return ( 
-        <div key={key} className="bg-slate-100 p-4 rounded-md mb-1">
-            {expense}
+        <div className="px-6 py-4 rounded-md mb-1 flex justify-between items-center shadow-md">
+            {expense.amount}€
             <Button 
                 text="Delete"
                 variant="danger"
