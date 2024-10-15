@@ -2,19 +2,20 @@ import Button from "../ui/Button";
 
 type ExpenseItemProps = {
     expense: number;
-    key: number;
+    index: number;
+    expenses: number[];
+    setExpenses: (expenses: number[]) => void;
 }
 
-const ExpenseItem = ({ expense, key } : ExpenseItemProps) => {
+const ExpenseItem = ({ expense, index, expenses, setExpenses } : ExpenseItemProps) => {
 
     const handleDelete = () => {
-        // Delete value into expenses Array
-        // set New values
-        console.log('delete');
+        expenses.splice(index, 1);
+        setExpenses([...expenses]);
     }
 
     return ( 
-        <div key={key} className="bg-slate-100 p-4 rounded-md mb-1">
+        <div className="px-6 py-4 rounded-md mb-1 flex justify-between items-center shadow-md">
             {expense}
             <Button 
                 text="Delete"

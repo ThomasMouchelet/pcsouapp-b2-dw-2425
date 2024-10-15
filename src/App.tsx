@@ -19,30 +19,39 @@ function App() {
   }
 
   return (
-    <>
-      <div>
+    <div className="p-6 flex justify-center items-center flex-col">
+      <div className="w-6/12">
         <form 
           onSubmit={handleSubmit} 
-          className=""
+          className="w-full"
         >
           <Input
             type="number"
             placeholder="Exemple: 300€"
-            className='mr-2'
+            className='mr-2 w-full'
             setValue={setExpenseInput}
           />
 
           <Button
             text="Ajouter"
             type="submit"
+            className="w-full mt-2"
           />
         </form>
       </div>
 
-      <div>
-        {expenses.map((expense, index) => <ExpenseItem expense={expense} key={index} />)}
+      <div className="mt-6 w-6/12">
+        {expenses.map((expense, index) => 
+          <ExpenseItem 
+            expense={expense} 
+            index={index} 
+            key={index}
+            expenses={expenses}
+            setExpenses={setExpenses}
+          />
+        )}
       </div>
-    </>
+    </div>
   )
 }
 

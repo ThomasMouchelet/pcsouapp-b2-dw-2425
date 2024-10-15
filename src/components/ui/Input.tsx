@@ -19,7 +19,7 @@ const Input = ({ placeholder, className, type, setValue } : InputProps) => {
     return ( 
         <input
             type={type || 'text'}
-            className={`border-2 text-xl py-2 px-4 text-slate-600 ${className}`}
+            className={`border-2 text-xl py-4 px-6 text-slate-600 ${className}`}
             placeholder={placeholder}
             onChange={handleChange}
         />
